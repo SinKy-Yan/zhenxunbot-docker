@@ -1,23 +1,26 @@
 FROM ubuntu:focal
-LABEL org.opencontainers.image.authors="源源圆球"
 WORKDIR /home
 ENV bot_qq=${bot_qq}
 ENV bot_qq_key=${bot_qq_key}
 ENV admin_qq=${admin_qq}
+ENV webui_passwd={$webui_passwd}
+ENV webui_user={$webui_user}
+ENV api_key={$api_key}
 
 # 设为非交互命令
 ARG DEBIAN_FRONTEND="noninteractive" 
 
-RUN sed -i 's/us.archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list; \
-sed -i 's/cn.archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list; \
-sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list; \
-sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list;
+# 更换软件源
+# RUN sed -i 's/us.archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
+# sed -i 's/cn.archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
+# sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
+# sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 
-# 安装依赖
+# apt安装依赖
 RUN apt update && apt upgrade -y && apt install -y --no-install-recommends \
-python3.8 \
+python3.9 \
 python3-distutils \
-python3.8-dev \
+python3.9-dev \
 vim \
 git \
 curl \
@@ -46,7 +49,10 @@ libssl-dev && \
 apt clean && rm -rf /var/lib/apt/lists/*
 
 # 调整软链接
-RUN ln -s /usr/bin/python3.8 /usr/bin/python
+RUN rm -f /usr/bin/python3 && \
+rm -f /usr/bin/python && \
+ln -s /usr/bin/python3.9 /usr/bin/python && \
+ln -s /usr/bin/python3.9 /usr/bin/python3
 
 # 调整时区+设定语言
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
@@ -54,9 +60,11 @@ ENV LANG=zh_CN.UTF-8
 
 # 安装pip,然后安装依赖,并清除缓存
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python get-pip.py && rm -f get-pip.py && \
-pip install -r https://raw.githubusercontent.com/zhenxun-org/zhenxun_bot-deploy/master/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple && \
-pip install rich requests jinja2 thefuzz aiocache baike nonebot_plugin_htmlrender imageio -i https://pypi.tuna.tsinghua.edu.cn/simple && \
+pip install -r https://raw.githubusercontent.com/zhenxun-org/zhenxun_bot-deploy/master/requirements.txt && \
+pip install rich requests jinja2 thefuzz aiocache baike nonebot_plugin_htmlrender imageio && \
 rm -rf ~/.cache/pip/*
+
+# 安装chromium
 RUN playwright install chromium
 
 # 克隆zhenxun_bot
@@ -70,9 +78,8 @@ npm install -g @vue/cli && \
 git clone https://github.com/HibiKier/zhenxun_bot_webui.git && \
 npm cache clean --force
 WORKDIR /home/zhenxun_bot_webui
-RUN npm config set registry https://registry.npmmirror.com/ && npm install && npm cache clean --force
+RUN npm install && npm cache clean --force
 
-RUN apt -y autoremove
 # 拷贝文件
 WORKDIR /home
 COPY ./go-cqhttp ./go-cqhttp

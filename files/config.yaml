@@ -165,7 +165,7 @@ web-ui:
   # web-ui
   # USERNAME: 前端管理用户名
   # PASSWORD: 前端管理密码
-  USERNAME: admin
+  USERNAME: root
   PASSWORD: 123456
 pix:
   # PIX图库
@@ -304,7 +304,7 @@ search_image:
   # MAX_FIND_IMAGE_COUNT: 识图返回的最大结果数
   # API_KEY: Saucenao的API_KEY，通过 https://saucenao.com/user.php?page=search-api 注册获取
   MAX_FIND_IMAGE_COUNT: 3
-  API_KEY: d16d3ef7dacc5898e79343f16e3eaf8f34371b5e
+  API_KEY: qqqqqq
 coser:
   # coser
   # WITHDRAW_COS_MESSAGE: 自动撤回，参1：延迟撤回色图时间(秒)，0 为关闭 | 参2：监控聊天类型，0(私聊) 1(群聊) 2(群聊+私聊)
