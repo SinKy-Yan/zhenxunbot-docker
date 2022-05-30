@@ -20,6 +20,9 @@
 ![Ubuntu](https://img.shields.io/badge/-Ubuntu-E95420?style=flat-square&&logo=ubuntu&logoColor=white)
 ![Ubuntu](https://img.shields.io/badge/-Python-3776AB?style=flat-square&&logo=python&logoColor=white)
 
+<img align=right src='https://github.githubassets.com/images/mona-whisper.gif' /> 顺手点个Star⭐呗~
+
+
 ## 注意事项⚠
 
 镜像有点大，解压后接近3GB，需要有足够的空间（可能会出个精简版镜像）
