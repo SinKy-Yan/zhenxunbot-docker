@@ -45,8 +45,8 @@ gcc \
 libsasl2-dev \
 libldap2-dev \
 ca-certificates \
-libssl-dev && \
-apt clean && rm -rf /var/lib/apt/lists/*
+libssl-dev \
+fonts-wqy-microhei
 
 # 调整软链接
 RUN rm -f /usr/bin/python3 && \
@@ -77,6 +77,7 @@ npm install -g yarn && \
 npm install -g @vue/cli && \
 git clone https://github.com/HibiKier/zhenxun_bot_webui.git && \
 npm cache clean --force
+RUN apt clean && rm -rf /var/lib/apt/lists/*
 WORKDIR /home/zhenxun_bot_webui
 RUN npm install && npm cache clean --force
 
