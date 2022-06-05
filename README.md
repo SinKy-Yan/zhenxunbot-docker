@@ -2,24 +2,19 @@
  * @Author: 源源圆球 1340793687@outlook.com
  * @Date: 2022-06-03 18:01:14
  * @LastEditors: 源源圆球 1340793687@outlook.com
- * @LastEditTime: 2022-06-05 16:04:31
+ * @LastEditTime: 2022-06-05 17:24:25
  * @FilePath: /docker/README.md
- * @Description: 
- * 
  * Copyright (c) 2022 by 源源圆球 1340793687@outlook.com, All Rights Reserved. 
 -->
-# [绪山真寻BOT](https://github.com/HibiKier/zhenxun_bot)的Docker版镜像🐋
+# [绪山真寻BOT](https://github.com/HibiKier/zhenxun_bot)的Docker镜像🐋
 
 ![](https://img.shields.io/github/workflow/status/SinKy-Yan/zhenxunbot-docker/Build%20Docker%20image?label=%E9%95%9C%E5%83%8F%E7%BC%96%E8%AF%91&style=for-the-badge)
-![](https://img.shields.io/docker/image-size/jyishit/zhenxun_bot?label=%E9%95%9C%E5%83%8F%E5%A4%A7%E5%B0%8F&style=for-the-badge)
+![](https://img.shields.io/docker/image-size/jyishit/zhenxun_bot?label=%E9%95%9C%E5%83%8F%E5%A4%A7%E5%B0%8F&style=for-the-badge&logo=docker&logoColor=white&color=2496ED)
 ![](https://img.shields.io/docker/pulls/jyishit/zhenxun_bot?label=%E4%B8%8B%E8%BD%BD%E6%AC%A1%E6%95%B0&style=for-the-badge)
-![](https://img.shields.io/badge/Python%E7%89%88%E6%9C%AC-3.9-ff69b4?style=for-the-badge)
-![](https://img.shields.io/badge/%E6%94%AF%E6%8C%81%E6%9E%B6%E6%9E%84-amd64%7Carm64-8B008B?style=for-the-badge)
-
-
+![](https://img.shields.io/badge/%E6%94%AF%E6%8C%81%E6%9E%B6%E6%9E%84-amd64%7Carm64-FF69B4?style=for-the-badge)
+![Arduino](https://img.shields.io/badge/-Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white)
+![Arduino](https://img.shields.io/badge/-Python3.9-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/HibiKier/zhenxun_bot?label=%E7%9C%9F%E5%AF%BBBOT%E7%89%88%E6%9C%AC&style=for-the-badge)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/Mrs4s/go-cqhttp?label=gocq%E7%89%88%E6%9C%AC&style=for-the-badge)
-![](https://changkun.de/urlstat?mode=github&repo=SinKy-Yan/zhenxunbot-docker)
 
 
 **镜像内已集成运行BOT需要的PostgreSQL🐘、绪山真寻BOT本体、以及真寻BOT-WebUI😋**
@@ -36,6 +31,8 @@
 **先确定能用go-cqhttp登录上BOT的QQ，否则需要进入容器查看日志**
 
 除了集成运行BOT必须的Python依赖之外，还有`rich`、`requests`、`jinja2`、`thefuzz`、`aiocache`、`baike`、`imageio`，这些是添加额外插件所需的常见依赖
+
+镜像内并没有`git`、`vim`、`wget`等常用软件包，需要你自己安装
 
 ## 迁移数据库📑
 
