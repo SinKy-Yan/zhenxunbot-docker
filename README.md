@@ -2,7 +2,7 @@
  * @Author: 源源圆球 1340793687@outlook.com
  * @Date: 2022-06-03 18:01:14
  * @LastEditors: 源源圆球 1340793687@outlook.com
- * @LastEditTime: 2022-06-05 17:24:25
+ * @LastEditTime: 2022-06-05 18:21:39
  * @FilePath: /docker/README.md
  * Copyright (c) 2022 by 源源圆球 1340793687@outlook.com, All Rights Reserved. 
 -->
@@ -26,13 +26,15 @@
 
 ## 需要知道💡
 
-你的机器最好有1G以上的空闲内存
+你的机器需要有1G以上的空闲内存、2GB以上的空余储存空间
 
 **先确定能用go-cqhttp登录上BOT的QQ，否则需要进入容器查看日志**
 
 除了集成运行BOT必须的Python依赖之外，还有`rich`、`requests`、`jinja2`、`thefuzz`、`aiocache`、`baike`、`imageio`，这些是添加额外插件所需的常见依赖
 
 镜像内并没有`git`、`vim`、`wget`等常用软件包，需要你自己安装
+
+也没有`chromium`，需要的话进入容器执行`playwright install chromium`
 
 ## 迁移数据库📑
 
@@ -78,7 +80,7 @@ jyishit/zhenxun_bot
 
 查看Docker日志，成功运行之后可以去`容器IP:8081`进入真寻的WebUI
 
-<div align="center"><img src="./image/Start.png" width="80%"/></div>
+<div align="center"><img src="./image/run.gif" width="80%"/></div>
 
 ## 需要帮助🐱‍💻？
 
