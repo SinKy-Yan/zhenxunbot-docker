@@ -2,7 +2,7 @@
  * @Author: 源源圆球 1340793687@outlook.com
  * @Date: 2022-06-03 18:01:14
  * @LastEditors: 源源圆球 1340793687@outlook.com
- * @LastEditTime: 2022-06-05 18:21:39
+ * @LastEditTime: 2022-06-06 11:17:38
  * @FilePath: /docker/README.md
  * Copyright (c) 2022 by 源源圆球 1340793687@outlook.com, All Rights Reserved. 
 -->
@@ -24,7 +24,7 @@
 顺手点个Star⭐呗~
 
 
-## 需要知道💡
+## 需要知道🧐
 
 你的机器需要有1G以上的空闲内存、2GB以上的空余储存空间
 
@@ -38,21 +38,17 @@
 
 ## 迁移数据库📑
 
-迁移数据库是为了如果你以前部署过真寻的话，可以继承好感度、金币等数据
+迁移数据库是为了如果你以前部署过真寻的话，可以继承好感度、金币等数据，当然你也可以迁移，它会自动新建
 
-请先导出旧数据库，如果你使用的是真寻文档里的搭建方法，那么应该可以用`pg_dump --host 127.0.0.1 --port 5432 --username uname  > zhenxun.sql testdb`这条命令导出数据库到当前目录并**命名为**`zhenxun.sql`
+请先导出旧数据库，如果你使用的是真寻文档里的搭建方法，那么应该可以用`pg_dump --host 127.0.0.1 --port 5432 --username uname > zhenxun.sql testdb`这条命令导出数据库，它会问你密码，密码可能是`zhenxun`，之后会在当前目录变出来一个叫`zhenxun.sql`的文件，如果不成功的话最好看一下这条命令里面的主机地址和端口和数据库名字是不是对的，具体怎么看自己百度PostgreSQL怎么操作
 
-然后将`zhenxun.sql`拷贝到将要部署Docker版真寻的宿主机的`~/my_plugins`目录下，**如果该目录不存在则需要手动创建**
-
-然后就可以了，容器创建时会检测有没有这个文件，有的话就会帮你导入的，不过只是帮你导入，数据库本身有问题导致报错就跟我没关系了
+然后将`zhenxun.sql`拷贝到将要部署Docker版真寻的宿主机的`~/my_plugins`目录下，**如果该目录不存在则需要手动创建**，然后就可以了，容器创建时会检测有没有这个文件，有的话就会帮你导入的，不过只是帮你导入，数据库本身有问题导致报错就跟我没关系
 
 ## 已知问题😥
 
 无法使用`检查更新真寻`自动更新真寻，会报错`Invalid cross-device link: '/home/zhenxun_bot/plugins' -> '/home/zhenxun_bot/backup/plugins'`,我怀疑可能是docker使用的overlay文件系统的问题，希望有谁能帮我解决一下
 
 跟真寻说`重启`之后重启成功也不会说已经重启完成，需要重启容器才会说，但是其实已经重启过了，**不影响使用**
-
-第一次运行容器会自动停止一次容器，不过它应该会自动重启，**不影响使用**
 
 ## 快速开始🎉
 
@@ -61,6 +57,8 @@
 ⚠识图API-KEY不替换也行，但是运行之后bot的识图功能会用不了，以后你想再加上的话需要进入容器自己更改，API_KEY通过[该网址](https://saucenao.com/user.php?page=search-api)注册获取
 
 ⚠会在当前用户的用户根目录里新建一个叫`my_plugins`的文件夹，这就是自定义插件的目录，同时里面也会有`WebUI`和`gocq`的日志文件，可以使用`cd ~/my_plugins`命令来进入
+
+⚠第一次运行容器会有一个`已创建config.yaml，请重启bot`的提示，这个不用管，只要按我下面命令里一样设了自动重启的话容器会自动重启，**不影响使用**
 
 ```
 docker run -itd --restart=on-failure:3 \
@@ -84,7 +82,7 @@ jyishit/zhenxun_bot
 
 ## 需要帮助🐱‍💻？
 
-你可以点击图片加入QQ交流群，或者提一个Issue
+你可以点击图片加入QQ交流群、有关代码的问题可以提一个[Issue](https://github.com/SinKy-Yan/zhenxunbot-docker/issues/new)、别的东西可以发在[讨论](https://github.com/SinKy-Yan/zhenxunbot-docker/discussions)里
 
 [![加入QQ群](https://img.shields.io/badge/QQ%E7%BE%A4-1034439737-ddff95?style=for-the-badge)](https://jq.qq.com/?_wv=1027&k=u8PgBkMZ)
 
