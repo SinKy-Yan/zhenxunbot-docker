@@ -33,6 +33,8 @@ WORKDIR /home/zhenxun_bot_webui
 RUN apt update && \
 apt upgrade -y && \
 apt install -y --no-install-recommends \
+#解决重启BUG
+net-tools \
 #WebUI要用的node.js
 nodejs \
 npm \

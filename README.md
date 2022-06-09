@@ -2,7 +2,7 @@
  * @Author: 源源圆球 1340793687@outlook.com
  * @Date: 2022-06-03 18:01:14
  * @LastEditors: 源源圆球 1340793687@outlook.com
- * @LastEditTime: 2022-06-06 11:17:38
+ * @LastEditTime: 2022-06-09 21:57:58
  * @FilePath: /docker/README.md
  * Copyright (c) 2022 by 源源圆球 1340793687@outlook.com, All Rights Reserved. 
 -->
@@ -46,9 +46,7 @@
 
 ## 已知问题😥
 
-无法使用`检查更新真寻`自动更新真寻，会报错`Invalid cross-device link: '/home/zhenxun_bot/plugins' -> '/home/zhenxun_bot/backup/plugins'`,我怀疑可能是docker使用的overlay文件系统的问题，希望有谁能帮我解决一下
-
-跟真寻说`重启`之后重启成功也不会说已经重启完成，需要重启容器才会说，但是其实已经重启过了，**不影响使用**
+OpenWrt系统下的`luci-app-docker`插件中的容器日志没有任何内容
 
 ## 快速开始🎉
 
