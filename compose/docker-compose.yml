@@ -1,0 +1,55 @@
+version: "2.6.1"
+services:
+    # 数据库
+    postgres:
+        image: postgres:alpine
+        restart: on-failure
+        container_name: PostgreSQL
+        ports:
+            - 5432:5432 # 端口映射
+        environment:
+            POSTGRES_USER: zhenxun # 数据库用户
+            POSTGRES_PASSWORD: 123456 # 数据库用户密码
+            POSTGRES_DB: zhenxun_db # 默认数据库
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+
+    # Go-cqhttp
+    go-cqhttp:
+        container_name: Go-cqhttp
+        restart: on-failure
+        image: jyishit/go-cqhttp
+        links:
+            - zhenxun
+        depends_on:
+            - zhenxun
+        environment:
+            - bot_qq=xxxxxxxxxx # !!!Bot用的QQ号
+            - bot_passwd=xxxxxxxxx # !!!Bot用的QQ密码
+        volumes:
+            - go-cqhttp_data:/home
+            - bot_data:/home/zhenxun_bot
+
+    # 机器人本体
+    zhenxun:
+        container_name: ZhenXun-bot
+        restart: on-failure
+        image: jyishit/zhenxun_bot
+        volumes:
+            - ./my_plugins:/home/my_plugins
+            - bot_data:/home/zhenxun_bot
+        expose:
+            - 8080
+        links:
+            - postgres
+        depends_on:
+            - postgres
+        environment:
+            - webui_user=admin # webui的用户名
+            - webui_passwd=123456 # webui的密码
+            - admin_qq=xxxxxxxxx # !!!管理员的QQ号
+
+volumes:
+    bot_data:
+    go-cqhttp_data:
+    postgres_data:
