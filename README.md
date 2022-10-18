@@ -30,7 +30,7 @@
 2. 下载本仓库中的`docker-compose.yml`文件,可以用`wget`、`curl`或者别的你会的方法,下面是使用`wget`下载的例子
 
 ```bash
-wget https://raw.githubusercontent.com/SinKy-Yan/zhenxunbot-docker/mulit/compose/docker-compose.yml
+wget https://raw.githubusercontent.com/SinKy-Yan/zhenxunbot-docker/master/compose/docker-compose.yml
 ```
 
 3. 编辑刚才下载好的`docker-compose.yml`,可以用`vim`、`nano`或者任何你会的编辑器,**按照文件里的注释改,最少只需要改`BOT用的QQ`、`BOT的QQ密码`、`管理员QQ号`这三行**,其他不懂什么意思的话不要动,其中数据库管理器不是必须的,不想要可以删掉那段
