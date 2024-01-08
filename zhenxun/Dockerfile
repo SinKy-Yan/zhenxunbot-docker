@@ -38,6 +38,8 @@ RUN apt update && \
 WORKDIR /home/zhenxun_bot
 RUN pip install poetry
 RUN poetry install
+RUN poetry run playwright install chromium
+RUN poetry run playwright install-deps chromium
 
 # 拷贝预先准备好的文件,这里的文件来源目录使用的工作目录是上一级,为了github action改的
 WORKDIR /home
