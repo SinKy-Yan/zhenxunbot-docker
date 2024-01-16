@@ -20,4 +20,4 @@ else
 fi
 
 cd /home/zhenxun_bot
-python bot.py
+poetry run python bot.py
